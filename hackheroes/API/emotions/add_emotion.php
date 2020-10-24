@@ -1,7 +1,7 @@
 <?php 
     //Jeżeli podano ID sesji, zmień id sesji
-    if (isset($_GET["session_id"])) {
-        session_id($_GET["session_id"]);
+    if (isset($_POST["session_id"])) {
+        session_id($_POST["session_id"]);
     }
     //Dołącz zewnętrzną bibliotekę do sanityzacji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
@@ -14,8 +14,10 @@
     $basicEmotion = sanitize_sql_string(sanitize_html_string($_POST["basicEmotion"]));
     $extendedEmotion = sanitize_sql_string(sanitize_html_string($_POST["extendedEmotion"]));
     $explanation = sanitize_sql_string(sanitize_html_string($_POST["explanation"]));
+    $public = $_POST["public"];
     $mysqldate = date ('Y-m-d');
     $last_ID = 0;
+    $error = '';
     $operation_error = 0;
 
     //Utwórz obiekt z połączeniem
@@ -40,8 +42,8 @@
 
     //Dodaj emocję jeżeli zalogowany
     if ($current_user_id <> 0) {
-        $sql = "INSERT INTO Emotions (userID, insertionDate, basicEmotionImage, basicEmotion, extendedEmotion, explanation)
-        VALUES (\"$current_user_id\", \"$mysqldate\", \"$basicEmotionImage\", \"$basicEmotion\", \"$extendedEmotion\", \"$explanation\");";
+        $sql = "INSERT INTO Emotions (userID, insertionDate, basicEmotionImage, basicEmotion, extendedEmotion, explanation, public)
+        VALUES (\"$current_user_id\", \"$mysqldate\", \"$basicEmotionImage\", \"$basicEmotion\", \"$extendedEmotion\", \"$explanation\", \"$public\");";
 
         if ($conn->query($sql) === TRUE) {
             //Pobierz ostatnie ID

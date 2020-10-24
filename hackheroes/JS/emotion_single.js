@@ -26,6 +26,9 @@ function redirectToLanding() {
 }
 
 $(function() {
+    //Pobierz parametry z URLa
+    var singleEmotionNumber = 0;
+    singleEmotionNumber = $.urlParam('emotion_id')
     $.get("API/users/get_login.php", {
         //Nie wysyłaj nic
     }).done(function(response) {
@@ -33,23 +36,14 @@ $(function() {
         var json = $.parseJSON(response)
         $('#username').html(json.username);
     });
-    $.get("API/users/get_login.php", {
-        //Nie wysyłaj nic
-    }).done(function(response) {
-        //Wyświetl zwróconą wiadomość z API
-        var json = $.parseJSON(response)
-        if(json.ID == 0) {
-            $('#innerMessage').bsAlert(
-                {
-                    type: json.resultType, 
-                    content: json.result,
-                    dismissible: true
-                }
-            );
-            setTimeout(redirectToLanding(), 2000); 
-        }
-        if(json.ID != 0) {
-            spawnEmotions();
-        }
-    });
+    spawnSingleEmotion(singleEmotionNumber);
 });
+
+$.urlParam = function(name){
+    //Malutka regexpowa funkcja do wyciagania parametrów z URLa
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null) {
+       return null;
+    }
+    return decodeURI(results[1]) || 0;
+}

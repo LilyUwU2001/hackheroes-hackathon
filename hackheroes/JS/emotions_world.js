@@ -49,7 +49,7 @@ $(function() {
             setTimeout(redirectToLanding(), 2000); 
         }
         if(json.ID != 0) {
-            spawnEmotions();
+            getUsernames();
         }
     });
 });

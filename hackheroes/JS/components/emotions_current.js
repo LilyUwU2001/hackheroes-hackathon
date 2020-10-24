@@ -18,7 +18,8 @@ var imageSources = {
     'Rozgniewany': 'angry.png',
     'Zniesmaczony': 'disgusted.png',
     'Smutny': 'sad.png',
-    'Szczęśliwy': 'happy.png'
+    'Szczęśliwy': 'happy.png',
+    'Nie potrafię określić': 'cantdecide.png'
 };
 
 //Gdy wybrano opcję, przejrzyj listę
@@ -28,9 +29,47 @@ $('#basicEmotionSelect').on('change', function() {
  
     //Wyczyść wybierałkę drugą
     $('#extendedEmotionSelect').empty();
+    $('#emotion').attr('src', 'images/emotions/'+imageSources[selectValue]);
     
     //Wypisz listę opcji
     for (i = 0; i < emotionsSelect[selectValue].length; i++) {
        $('#extendedEmotionSelect').append("<option value='" + emotionsSelect[selectValue][i] + "'>" + emotionsSelect[selectValue][i] + "</option>");
     }
  });
+
+function submitEmotion() {
+    var basicEmotionImage = $('#emotion').attr('src');
+    var basicEmotion = $('#basicEmotionSelect').val();
+    var extendedEmotion = $('#extendedEmotionSelect').val();
+    var explanation = $('#explanationTextArea').val();
+    var public = trueFalse($('#publicCheckbox').is(":checked"));
+
+    //Wyślij dane do API POSTem
+    $.post("API/emotions/add_emotion.php", {
+        basicEmotionImage: basicEmotionImage,
+        basicEmotion: basicEmotion,
+        extendedEmotion: extendedEmotion,
+        explanation: explanation,
+        public: public
+    }).done(function(response) {
+        //Wyświetl zwróconą wiadomość z API
+        var json = $.parseJSON(response)
+        $('#innerMessage').bsAlert(
+            {
+                type: json.resultType, 
+                content: json.result,
+                dismissible: true
+            }
+        );
+        spawnEmotions();
+    });
+}
+
+//Zwróć 1 dla true, 0 dla false
+function trueFalse(value) {
+    if (value == true) {
+        return 1
+    } else {
+        return 0
+    }
+}

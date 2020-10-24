@@ -32,11 +32,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="index.html"><i class="fa fa-home"></i> Strona główna</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="emotions.html"><i class="fa fa-smile-o"></i> Dziennik emocji <span class="sr-only">(obecna)</span></a>
-                        </li>    
                         <li class="nav-item">
-                            <a class="nav-link" href="emotions_world.html"><i class="fa fa-bullhorn"></i> Świat emocji</a>
+                            <a class="nav-link" href="emotions.html"><i class="fa fa-smile-o"></i> Dziennik emocji</a>
+                        </li>    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="emotions_world.html"><i class="fa fa-bullhorn"></i> Świat emocji <span class="sr-only">(obecna)</span></a>
                         </li>     
                     </ul>
                     <ul class="navbar-nav my-2 my-lg-0">
@@ -51,48 +51,7 @@
                 </div>
             </nav>
             <div class="container">
-                <h1 class="display-4 lead-text text-center">Dziennik emocji</h1>
-                <div class="mt-4 row">
-                    <div class="card col-12 col-md-3 col-lg-2">
-                        <div class="card-body">
-                            <p class="card-text d-flex justify-content-center"><b>Jak się czujesz?</b></p>
-                        </div>
-                        <img id="emotion" class="img-fluid" src="images/emotions/happy.png">
-                        <select class="mt-2 form-control" id="basicEmotionSelect">
-                            <option>Szczęśliwy</option>
-                            <option>Smutny</option>
-                            <option>Rozgniewany</option>
-                            <option>Lękliwy</option>
-                            <option>Zaskoczony</option>
-                            <option>Zniesmaczony</option>
-                            <option>Słaby</option>
-                            <option>Nie potrafię określić</option>
-                        </select>
-                        <label class="mt-2 text-center" for="exampleFormControlSelect1"><b>A jak dokładniej?</b></label>
-                        <select class="form-control mb-2" id="extendedEmotionSelect">
-                            <option>Żartobliwy</option>
-                            <option>Zadowolony</option>
-                            <option>Zainteresowany</option>
-                            <option>Dumny</option>
-                            <option>Pełen siły</option>
-                            <option>Spokojny</option>
-                            <option>Czujący bliskość</option>
-                            <option>Optymistyczny</option>
-                            <option>Nie potrafię doprecyzować</option>
-                        </select>
-                    </div>
-                    <div class="card col-12 col-md-9 col-lg-10">
-                        <div class="card-body">
-                            <p class="card-text d-flex justify-content-center"><b>Opisz, dlaczego się tak czujesz.</b></p>
-                            <div class="mt-2 row justify-content-center">
-                                <textarea id="explanationTextArea" style="resize: none" rows="6" class="form-control"></textarea>
-                                <input id="publicCheckbox" type="checkbox" class="mt-2 form-control">
-                                <label class="form-check-label" for="publicCheckbox">Opublikuj mój wpis w Świecie emocji</label>
-                                <button id="submitButton" onclick="submitEmotion()" class="btn btn-primary btn-block col-12 mt-2"><i class="fa fa-plus"></i> Dodaj wpis</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h1 class="display-4 lead-text text-center">Świat emocji</h1>
                 <div class="mt-4 row">
                     <div class="card col-12">
                         <div class="card-body">
@@ -138,8 +97,8 @@
         <script src="https://unpkg.com/jquery-bsalert@2.0.0/dist/jquery.bsAlert.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <script src="JS/components/emotions_current.js"></script>
-        <script src="JS/components/emotions_spawner.js"></script>
         <script src="JS/components/emotions_search.js"></script>
-        <script src="JS/emotions.js"></script>
+        <script src="JS/components/emotions_spawner_world.js"></script>
+        <script src="JS/emotions_world.js"></script>
     </body>     
 </html>

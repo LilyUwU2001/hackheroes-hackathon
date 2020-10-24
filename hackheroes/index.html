@@ -2,7 +2,7 @@
 <html>
     <head>
         <!--Tytuł-->
-        <title>ASToolbox</title>
+        <title>Emodiary - strona główna</title>
         <!--Polskie znaczki-->
         <meta charset="UTF-8">
         <!--Ładujemy CSSy tutaj-->
@@ -14,34 +14,29 @@
         <!--Strona mobilna-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body>
+    <body class="mainpage">
         <!--SZABLON-->
         <header>
-            <div id="message">
-                <div id="innerMessage">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+                <div id="message" class="fixed-top">
+                    <div id="innerMessage">
                     <!--Miejsce na alerty-->
+                    </div>
                 </div>
-            </div>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <span class="navbar-brand">Emodiary</span>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="index.html"><i class="fa fa-home"></i> Strona główna <span class="sr-only">(obecna)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="calendar.html"><i class="fa fa-calendar"></i> Kalendarz</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="aac.html"><i class="fa fa-keyboard-o"></i> Klawiatura AAC</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="emotions.html"><i class="fa fa-smile-o"></i> Dziennik emocji</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="forum.html"><i class="fa fa-bullhorn"></i> Forum</a>
+                            <a class="nav-link" href="emotions_world.html"><i class="fa fa-bullhorn"></i> Świat emocji</a>
                         </li>        
                     </ul>
                     <ul class="navbar-nav my-2 my-lg-0">
@@ -54,10 +49,9 @@
                         </li>
                     </ul>
                 </div>
-                <span class="navbar-brand d-lg-none">ASToolbox</span>
             </nav>
             <div class="container">
-                <h1 class="display-4 lead-text text-center">Witaj w głównej stronie aplikacji ASToolbox!</h1>
+                <h1 class="display-4 lead-text text-center">Witaj w głównej stronie aplikacji Emodiary!</h1>
                 <p>Jesteś zalogowany jako: </p>
                 <br>
                 <p>o ID usera: </p>

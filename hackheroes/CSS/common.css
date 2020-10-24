@@ -9,8 +9,9 @@
 }
 
 /* kolor tła strony */
-body {
-    background-color: rgb(128,188,255)
+.mainpage {
+    background-color: rgb(128,188,255);
+    padding-top: 60px;
 }
 
 /* tekst u góry podstron aplikacji */
@@ -30,9 +31,20 @@ body {
     width: 100%;
 }
 
-/* strona rozciągnięta na pełną wysokość ekranu */
-.fullpage {
-    height: 100vh;
+/* jakieś brudne badziewie by działało środkowanie na PC */
+@media only screen and (min-width: 768px) {
+  .pcpadding {
+    padding-top: 120px !important;
+  }
+}
+
+/* przyciski społecznościowe */
+.facebook-btn {
+    background-color: #3b5998;
+}
+
+.facebook-btn:hover {
+    background-color: #2f4779;
 }
 
 /* alert bootstrapowy */
