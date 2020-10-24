@@ -41,7 +41,8 @@ $sql = "CREATE TABLE Emotions (
     basicEmotion VARCHAR(255) NOT NULL,
     extendedEmotion VARCHAR(255) NOT NULL,
     explanation TEXT,
-    public BOOLEAN NOT NULL
+    public BOOLEAN NOT NULL,
+    hearts BIGINT UNSIGNED
 )";
 
 if ($conn->query($sql) === TRUE) {

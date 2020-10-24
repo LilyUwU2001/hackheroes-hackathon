@@ -58,7 +58,7 @@
         while($row = $result->fetch_assoc()) {
             //Rób tablicę wszystkich wpisów!
             array_push($all_emotions_array, array("ID"=>$row["id"], "userID"=>$row["userID"], "insertionDate"=>$row["insertionDate"], "basicEmotionImage"=>$row["basicEmotionImage"], 
-                "basicEmotion"=>$row["basicEmotion"], "extendedEmotion"=>$row["extendedEmotion"],"explanation"=>$row["explanation"],"public"=>$row["public"]));
+                "basicEmotion"=>$row["basicEmotion"], "extendedEmotion"=>$row["extendedEmotion"],"explanation"=>$row["explanation"],"public"=>$row["public"],"hearts"=>$row["hearts"]));
         }
         //Na koniec wypluj z API tablicę zawierającą wszystkie wpisy do świata emocji jako JSON
         $arr = array('result' => 'Znaleziono emocje.', 'resultType' => 'info', 'data' => $all_emotions_array);

@@ -94,7 +94,7 @@ function spawnEmotions(date, basicEmotion) {
                                         <button id="submitButton" onclick="writeKindWords(`+json.data[i].ID+`)" class="btn btn-primary btn-block"><i class="fa fa-sticky-note-o"></i> Napisz miłe słowa</button>
                                     </div>  
                                     <div class="col-12 col-md-4 mt-2 mt-md-0 text-center">
-                                        <button id="submitButton" onclick="heartEmotion(`+json.data[i].ID+`)" class="btn btn-danger btn-block"><i class="fa fa-heart"></i> Daj serduszko</button>
+                                        <button id="submitButton" onclick="heartEmotion(`+json.data[i].ID+`)" class="btn btn-danger btn-block"><i class="fa fa-heart"></i> Daj serduszko (`+json.data[i].hearts+`)</button>
                                     </div>  
                                 </div>
                             </div>
@@ -127,6 +127,47 @@ function deleteEmotion(delete_id) {
 function shareEmotion(share_url) {
     //Podziel się na medium społecznościowym
     window.open(share_url);
+}
+
+function heartEmotion(postID) {
+    //Sprawdź status serduszka dla obecnie zalogowanego ID i postu
+    $.post("API/hearts/check_hearted_status.php", {
+        heart_id: postID
+    }).done(function(response) {
+        //Daj serduszko jeżeli nie ma, zabierz jeśli jest
+        var json = $.parseJSON(response)
+        if (json.hearted == "true") {
+            $.post("API/hearts/delete_heart.php", {
+                heart_id: postID
+            }).done(function(response) {
+                //Wyświetl zwróconą wiadomość z API
+                var json = $.parseJSON(response)
+                $('#innerMessage').bsAlert(
+                    {
+                        type: json.resultType, 
+                        content: json.result,
+                        dismissible: true
+                    }
+                );
+                spawnEmotions();
+            });
+        } else {
+            $.post("API/hearts/add_heart.php", {
+                heart_id: postID
+            }).done(function(response) {
+                //Wyświetl zwróconą wiadomość z API
+                var json = $.parseJSON(response)
+                $('#innerMessage').bsAlert(
+                    {
+                        type: json.resultType, 
+                        content: json.result,
+                        dismissible: true
+                    }
+                );
+                spawnEmotions();
+            });
+        }
+    });
 }
 
 //Użyj API przeglądarki by czytać wpisy

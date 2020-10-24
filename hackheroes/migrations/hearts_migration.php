@@ -36,7 +36,7 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE Hearts (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     userID BIGINT UNSIGNED,
-    postID BIGINT UNSIGNED,
+    postID BIGINT UNSIGNED
 )";
 
 if ($conn->query($sql) === TRUE) {

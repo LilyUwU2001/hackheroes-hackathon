@@ -10,7 +10,8 @@
     //Dołącz obsługę sesji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
     $current_user_id = $_SESSION["user"];
-    $emotionID = $_POST["emotionID"];
+    $hearted_post_id = $_POST["heart_id"];
+    $hearts_number = 0;
     $error = '';
     $operation_error = 0;
 
@@ -35,16 +36,37 @@
     }
 
     //Spreparuj SQLa wyszukiwarki
-    $sql = "DELETE FROM Emotions WHERE userID = '$current_user_id' AND id = '$emotionID'";
-    //Usuń wpis
+    $sql = "DELETE FROM Hearts WHERE userID = '$current_user_id' AND postID = '$hearted_post_id'";
+    //Zabierz serduszko :(
     $result=mysqli_query($conn, $sql);
 
+    //Potem pobierz liczbę serduszek we wpisie
+    $sql = "SELECT * FROM Emotions WHERE id = '$hearted_post_id'";
+    //Wyciągnij liczbę serduszek
+    $result=mysqli_query($conn, $sql);
+
+    if ($result->num_rows > 0) {
+        //Jeżeli wpis istnieje, pobierz dane
+        while($row = $result->fetch_assoc()) {
+            //Zapisz liczbę serduszek
+            $hearts_number = $row["hearts"];
+            //Zdekrementuj ją o 1
+            $hearts_number = $hearts_number - 1;
+        }
+    } 
+
+    //Na koniec zdekrementuj liczbę serduszek we wpisie
+    $sql = "UPDATE Emotions SET hearts = ".$hearts_number." WHERE id = '$hearted_post_id'";
+    //Wyciągnij liczbę serduszek
+    $result=mysqli_query($conn, $sql);
+    
+
     if ($operation_error == 0) {
-        $arr = array('result' => 'Usunięto wpis w dzienniku emocji.', 'resultType' => 'success');
+        $arr = array('result' => 'Nie chcesz dać serduszka? A to szkoda :(', 'resultType' => 'success');
         echo json_encode($arr);
     } 
     else {
-        $arr = array('result' => 'Nie znaleziono wpisu w dzienniku emocji.', 'resultType' => 'danger');
+        $arr = array('result' => 'Błąd podczas zabierania serduszka. Dane dla nerdów: '.$error, 'resultType' => 'danger');
         echo json_encode($arr);
     }
 ?>

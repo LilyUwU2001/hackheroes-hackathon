@@ -10,7 +10,7 @@
     //Dołącz obsługę sesji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
     $current_user_id = $_SESSION["user"];
-    $emotionID = $_POST["emotionID"];
+    $hearted_post_id = $_POST["heart_id"];
     $error = '';
     $operation_error = 0;
 
@@ -35,16 +35,19 @@
     }
 
     //Spreparuj SQLa wyszukiwarki
-    $sql = "DELETE FROM Emotions WHERE userID = '$current_user_id' AND id = '$emotionID'";
-    //Usuń wpis
+    $sql = "SELECT * FROM Hearts WHERE userID = '$current_user_id' AND postID = '$hearted_post_id'";
+    //Sprawdź czy dany post jest oserduszkowany przez obecnie zalogowanego użytkownika
     $result=mysqli_query($conn, $sql);
 
-    if ($operation_error == 0) {
-        $arr = array('result' => 'Usunięto wpis w dzienniku emocji.', 'resultType' => 'success');
-        echo json_encode($arr);
-    } 
+    if ($result->num_rows > 0) {
+        //Jeżeli serduszko istnieje, pobierz dane
+        while($row = $result->fetch_assoc()) {
+            $arr = array('result' => 'Post jest oserduszkowany.', 'resultType' => 'info', 'hearted' => 'true');
+            echo json_encode($arr);
+        } 
+    }
     else {
-        $arr = array('result' => 'Nie znaleziono wpisu w dzienniku emocji.', 'resultType' => 'danger');
+        $arr = array('result' => 'Post nie jest oserduszkowany.', 'resultType' => 'danger', 'hearted' => 'false');
         echo json_encode($arr);
     }
 ?>
