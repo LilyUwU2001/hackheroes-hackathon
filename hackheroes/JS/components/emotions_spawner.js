@@ -19,19 +19,22 @@ function spawnEmotions(date, basicEmotion) {
                     </div>
                     <div class="card col-12 col-md-9 col-lg-10">
                         <div class="card-body">
-                            <p class="card-text d-flex justify-content-center"><b>Wpis z dnia `+json.data[i].insertionDate+`:</b></p>
+                            <div class="mt-2 row">
+                                <p class="col-6 text-left"><b>Wpis z dnia `+json.data[i].insertionDate+`:</b></p>
+                                <p class="col-6 text-right"><b>❤ `+json.data[i].hearts+`</b></p>
+                            </div>
                             <p class="justify">`+json.data[i].explanation+`</p>
                             <div class="mt-2 row justify-content-center">
-                                <div class="col-12 col-md-3 text-center">
-                                    <button id="submitButton" onclick="readEmotion('`+json.data[i].explanation+`')" class="btn btn-primary btn-block"><i class="fa fa-volume-up"></i> Czytaj wpis na głos</button>
+                                <div class="col-12 col-lg-3 text-center">
+                                    <button id="submitButton" onclick="readEmotion('`+json.data[i].explanation+`')" class="btn btn-primary btn-block"><i class="fa fa-volume-up"></i> Czytaj na głos</button>
                                 </div>
-                                <div class="col-12 col-md-3 mt-2 mt-md-0 text-center">
-                                    <button id="submitButton" onclick="shareEmotion('https://www.facebook.com/sharer/sharer.php?u=https://emodiary.000webhostapp.com/emotion_single.html?emotion_id=`+json.data[i].ID+`')" class="btn btn-primary btn-block facebook-btn"><i class="fa fa-facebook"></i> Udostępnij</button>
+                                <div class="col-12 col-lg-3 mt-2 mt-lg-0 text-center">
+                                    <button id="submitButton" onclick="shareEmotion('https://www.facebook.com/sharer/sharer.php?u=http://emodiary.000webhostapp.com/emotion_single.html?emotion_id=`+json.data[i].ID+`')" class="btn btn-primary btn-block facebook-btn"><i class="fa fa-facebook"></i> Udostępnij</button>
                                 </div>  
-                                <div class="col-12 col-md-3 mt-2 mt-md-0 text-center">
-                                    <button id="submitButton" onclick="shareEmotion('https://emodiary.000webhostapp.com/emotion_single.html?emotion_id=`+json.data[i].ID+`')" class="btn btn-secondary btn-block"><i class="fa fa-link"></i> Otwórz link</button>
+                                <div class="col-12 col-lg-3 mt-2 mt-lg-0 text-center">
+                                    <button id="submitButton" onclick="shareEmotion('emotion_single.html?emotion_id=`+json.data[i].ID+`')" class="btn btn-secondary btn-block"><i class="fa fa-link"></i> Otwórz link</button>
                                 </div>  
-                                <div class="col-12 col-md-3 mt-2 mt-md-0 text-center">
+                                <div class="col-12 col-lg-3 mt-2 mt-lg-0 text-center">
                                     <button id="submitButton" onclick="deleteEmotion(`+json.data[i].ID+`)" class="btn btn-danger btn-block"><i class="fa fa-minus"></i> Usuń wpis</button>
                                 </div>  
                             </div>

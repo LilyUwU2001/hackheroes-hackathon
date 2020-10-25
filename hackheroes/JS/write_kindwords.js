@@ -20,6 +20,37 @@ function logoutUser() {
 });
 }
 
+function submitKindwords() {
+    //Pobierz parametry z URLa
+    var singleEmotionNumber = 0;
+    var kindwords = $("#kindWordsTextArea").val();
+    singleEmotionNumber = $.urlParam('emotion_id')
+    $.post("API/kindwords/add_kindwords.php", {
+        post_id: singleEmotionNumber,
+        kindwords: kindwords
+    }).done(function(response) {
+        //Wyświetl zwróconą wiadomość z API
+        var json = $.parseJSON(response)
+        $('#innerMessage').bsAlert(
+            {
+                type: json.resultType, 
+                content: json.result,
+                dismissible: true
+            }
+        );
+        //Jeśli operacja się powiodła, zablokuj przycisk do wysylania i do momentu przekierowania
+        if (json.resultType == 'success') {
+            $('#submitButton').attr("disabled", true);
+            setTimeout(redirectToEmotionWorld(), 2000); 
+        }
+    });
+}
+
+function redirectToEmotionWorld() {
+    //Przekieruj do aplikacji
+    window.location.href = "emotions_world.html";
+}
+
 function redirectToLanding() {
     //Przekieruj do landinga
     window.location.href = "landing.html";

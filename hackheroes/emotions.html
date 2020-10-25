@@ -6,9 +6,7 @@
         <!--Polskie znaczki-->
         <meta charset="UTF-8">
         <!--Ładujemy CSSy tutaj-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="CSS/common.css">
         <!--Ikonka-->
         <link rel="shortcut icon" href="images/favicon.ico" >
         <!--Strona mobilna-->
@@ -37,6 +35,9 @@
                         </li>    
                         <li class="nav-item">
                             <a class="nav-link" href="emotions_world.html"><i class="fa fa-bullhorn"></i> Świat emocji</a>
+                        </li>  
+                        <li class="nav-item">
+                            <a class="nav-link" href="read_kindwords.html"><i class="fa fa-heart"></i> Miłe słowa</a>
                         </li>     
                     </ul>
                     <ul class="navbar-nav my-2 my-lg-0">
@@ -51,7 +52,7 @@
                 </div>
             </nav>
             <div class="container">
-                <h1 class="display-4 lead-text text-center">Dziennik emocji</h1>
+                <h1 class="display-4 text-center">Dziennik emocji</h1>
                 <div class="mt-4 row">
                     <div class="card col-12 col-md-3 col-lg-2">
                         <div class="card-body">
@@ -82,13 +83,28 @@
                         </select>
                     </div>
                     <div class="card col-12 col-md-9 col-lg-10">
-                        <div class="card-body">
-                            <p class="card-text d-flex justify-content-center"><b>Opisz, dlaczego się tak czujesz.</b></p>
-                            <div class="mt-2 row justify-content-center">
-                                <textarea id="explanationTextArea" style="resize: none" rows="6" class="form-control"></textarea>
-                                <input id="publicCheckbox" type="checkbox" class="mt-2 form-control">
-                                <label class="form-check-label" for="publicCheckbox">Opublikuj mój wpis w Świecie emocji</label>
-                                <button id="submitButton" onclick="submitEmotion()" class="btn btn-primary btn-block col-12 mt-2"><i class="fa fa-plus"></i> Dodaj wpis</button>
+                        <div class="card-body row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="card-text d-flex justify-content-center"><b>Opisz, dlaczego się tak czujesz.</b></p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 row justify-content-center">
+                                    <div class="col-12">
+                                        <textarea id="explanationTextArea" style="resize: none" rows="9" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-2 row justify-content-center text-center">
+                                    <div class="col-12">
+                                        <label class="form-check-label" for="publicCheckbox"><input id="publicCheckbox" type="checkbox" class="form-check-input">Opublikuj mój wpis w Świecie emocji</label>
+                                    </div>
+                                </div>
+                                <div class="mt-2 row justify-content-center text-center">
+                                    <div class="col-12">
+                                        <button id="submitButton" onclick="submitEmotion()" class="btn btn-primary btn-block col-12 mt-2"><i class="fa fa-plus"></i> Dodaj wpis</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,7 +137,7 @@
                                     <button id="clearEmotion" onclick="clearEmotion()" class="btn btn-primary btn-block"><i class="fa fa-close"></i></button>
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <button id="clearDate" onclick="searchEmotion()" class="btn btn-primary btn-block"><i class="fa fa-search"></i>Szukaj</button>
+                                    <button id="clearDate" onclick="searchEmotion()" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Szukaj</button>
                                 </div>
                             </div>
                         </div>
@@ -137,6 +153,7 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://unpkg.com/jquery-bsalert@2.0.0/dist/jquery.bsAlert.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="JS/themes.js"></script>
         <script src="JS/components/emotions_current.js"></script>
         <script src="JS/components/emotions_spawner.js"></script>
         <script src="JS/components/emotions_search.js"></script>

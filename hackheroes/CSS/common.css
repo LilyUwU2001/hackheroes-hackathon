@@ -10,8 +10,7 @@
 
 /* kolor tła strony */
 .mainpage {
-    background-color: rgb(128,188,255);
-    padding-top: 60px;
+    padding-top: 100px;
 }
 
 /* tekst u góry podstron aplikacji */
@@ -40,11 +39,13 @@
 
 /* przyciski społecznościowe */
 .facebook-btn {
-    background-color: #3b5998;
+    background: #3b5998 !important;
+    color: #FFFFFF !important;
 }
 
 .facebook-btn:hover {
-    background-color: #2f4779;
+    background: #2f4779 !important;
+    color: #FFFFFF !important;
 }
 
 /* alert bootstrapowy */

@@ -1,7 +1,7 @@
 <?php 
     //Jeżeli podano ID sesji, zmień id sesji
-    if (isset($_POST["session_id"])) {
-        session_id($_POST["session_id"]);
+    if (isset($_GET["session_id"])) {
+        session_id($_GET["session_id"]);
     }
     //Dołącz zewnętrzną bibliotekę do sanityzacji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
@@ -10,8 +10,7 @@
     //Dołącz obsługę sesji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
     $current_user_id = $_SESSION["user"];
-    $hearted_post_id = $_POST["heart_id"];
-    $hearts_number = 0;
+    $all_hearts_array = [];
     $error = '';
     $operation_error = 0;
 
@@ -36,36 +35,19 @@
     }
 
     //Spreparuj SQLa wyszukiwarki
-    $sql = "DELETE FROM Hearts WHERE userID = '$current_user_id' AND postID = '$hearted_post_id'";
-    //Zabierz serduszko :(
-    $result=mysqli_query($conn, $sql);
-
-    //Potem pobierz liczbę serduszek we wpisie
-    $sql = "SELECT * FROM Emotions WHERE id = '$hearted_post_id'";
-    //Wyciągnij liczbę serduszek
+    $sql = "SELECT * FROM Hearts WHERE userID = '$current_user_id'";
     $result=mysqli_query($conn, $sql);
 
     if ($result->num_rows > 0) {
-        //Jeżeli wpis istnieje, pobierz dane
+        //Jazda z koksem, wyciągamy serduszka zalogowanego
         while($row = $result->fetch_assoc()) {
-            //Zapisz liczbę serduszek
-            $hearts_number = $row["hearts"];
-            //Zdekrementuj ją o 1
-            $hearts_number = $hearts_number - 1;
+            array_push($all_hearts_array, array("postID"=>$row["postID"]));
         }
-    } 
-
-    //Na koniec zdekrementuj liczbę serduszek we wpisie
-    $sql = "UPDATE Emotions SET hearts = ".$hearts_number." WHERE id = '$hearted_post_id'";
-    //Wyciągnij liczbę serduszek
-    $result=mysqli_query($conn, $sql);
-    
-    if ($operation_error == 0) {
-        $arr = array('result' => 'Nie chcesz dać serduszka? A to szkoda :(', 'resultType' => 'success');
+        $arr = array('result' => 'Znaleziono serduszka.', 'resultType' => 'info', 'data' => $all_hearts_array);
         echo json_encode($arr);
     } 
     else {
-        $arr = array('result' => 'Błąd podczas zabierania serduszka. Dane dla nerdów: '.$error, 'resultType' => 'danger');
+        $arr = array('result' => 'Nie znaleziono serduszek.', 'resultType' => 'danger', 'data' => '');
         echo json_encode($arr);
     }
 ?>

@@ -2,7 +2,7 @@
 <html>
     <head>
         <!--Tytuł-->
-        <title>Emodiary - świat emocji</title>
+        <title>Emodiary - Miłe słowa</title>
         <!--Polskie znaczki-->
         <meta charset="UTF-8">
         <!--Ładujemy CSSy tutaj-->
@@ -33,11 +33,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="emotions.html"><i class="fa fa-smile-o"></i> Dziennik emocji</a>
                         </li>    
-                        <li class="nav-item active">
-                            <a class="nav-link" href="emotions_world.html"><i class="fa fa-bullhorn"></i> Świat emocji <span class="sr-only">(obecna)</span></a>
-                        </li>   
                         <li class="nav-item">
-                            <a class="nav-link" href="read_kindwords.html"><i class="fa fa-heart"></i> Miłe słowa</a>
+                            <a class="nav-link" href="emotions_world.html"><i class="fa fa-bullhorn"></i> Świat emocji</a>
+                        </li>   
+                        <li class="nav-item active">
+                            <a class="nav-link" href="read_kindwords.html"><i class="fa fa-heart"></i> Miłe słowa <span class="sr-only">(obecna)</span></a>
                         </li>    
                     </ul>
                     <ul class="navbar-nav my-2 my-lg-0">
@@ -52,41 +52,7 @@
                 </div>
             </nav>
             <div class="container">
-                <h1 class="display-4 text-center">Świat emocji</h1>
-                <div class="mt-4 row">
-                    <div class="card col-12">
-                        <div class="card-body">
-                            <p class="card-text d-flex justify-content-center"><b>Wyszukiwarka wpisów</b></p>
-                            <div class="mt-2 row">
-                                <div class="col-9 col-md-10 col-lg-11">
-                                    <input id="dateSearch" class="form-control" type="date">
-                                </div>
-                                <div class="col-3 col-md-2 col-lg-1">
-                                    <button id="clearDate" onclick="clearDate()" class="btn btn-primary btn-block"><i class="fa fa-close"></i></button>
-                                </div>
-                                <div class="col-9 col-md-10 col-lg-11 mt-2">
-                                    <select class="form-control" id="emotionSearch">
-                                        <option value="">(Wyszukuj wszystkie)</option>
-                                        <option>Szczęśliwy</option>
-                                        <option>Smutny</option>
-                                        <option>Rozgniewany</option>
-                                        <option>Lękliwy</option>
-                                        <option>Zaskoczony</option>
-                                        <option>Zniesmaczony</option>
-                                        <option>Słaby</option>
-                                        <option>Nie potrafię określić</option>
-                                    </select>
-                                </div>
-                                <div class="col-3 col-md-2 col-lg-1 mt-2">
-                                    <button id="clearEmotion" onclick="clearEmotion()" class="btn btn-primary btn-block"><i class="fa fa-close"></i></button>
-                                </div>
-                                <div class="col-12 mt-2">
-                                    <button id="clearDate" onclick="searchEmotion()" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Szukaj</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h1 class="display-4 text-center">Miłe słowa</h1>
                 <div id="emotionContainer" class="mb-4">
                     <!--Tu idą następne emocje-->
                 </div>
@@ -98,9 +64,9 @@
         <script src="https://unpkg.com/jquery-bsalert@2.0.0/dist/jquery.bsAlert.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <script src="JS/themes.js"></script>
-        <script src="JS/components/emotions_current.js"></script>
-        <script src="JS/components/emotions_search.js"></script>
+        <script src="JS/emotions_current.js"></script>
         <script src="JS/components/emotions_spawner_world.js"></script>
-        <script src="JS/emotions_world.js"></script>
+        <script src="JS/components/kindwords_spawner.js"></script>
+        <script src="JS/kindwords.js"></script>
     </body>     
 </html>

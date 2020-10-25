@@ -11,6 +11,11 @@
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
     $current_user_id = $_SESSION["user"];
     $hearted_post_id = $_POST["heart_id"];
+    $recipient_id = 0;
+    $post_text = "";
+    $user_login = "";
+    $final_post_data = "";
+    $final_link = "";
     $last_ID = 0;
     $error = '';
     $hearts_number = 0;
@@ -36,11 +41,51 @@
         $operation_error = 1;
     }
 
+    //Wyciągnij tekst posta
+    //Spreparuj SQLa wyszukiwarki
+    $sql = "SELECT * FROM Emotions WHERE id = '$hearted_post_id'";
+    //Wyciągnij wszystkie emocje użytkownika
+    $result=mysqli_query($conn, $sql);
+
+    if ($result->num_rows > 0) {
+        //Jeżeli emocje istnieją, pobierz dane
+        while($row = $result->fetch_assoc()) {
+            $post_text = $row["explanation"];
+            $recipient_id = $row["userID"];
+        }
+    } 
+
+    //Wyciągnij nazwę użytkownika
+    $sql = "SELECT * FROM Users WHERE id = '$current_user_id'";
+    $result=mysqli_query($conn, $sql);
+
+    if ($result->num_rows > 0) {
+        //Jeżeli użytkownik o podanych danych istnieje, wyciągnij jego dane
+        while($row = $result->fetch_assoc()) {
+            $user_login = $row["username"];
+        }
+    }
+
+    //Skonstruuj treść powiadomienia
+    $final_post_data = "Użytkownik ".$user_login." właśnie dał serduszko Twojemu postowi ".$post_text;
+    $final_link = "http://emodiary.000webhostapp.com/emotion_single.html?emotion_id=".$hearted_post_id;
+
     //Dodaj serduszko jeśli zalogowany
     if ($current_user_id <> 0) {
-        //Najpierw dodaj serduszko
+        //Najpierw dodaj serduszko oraz powiadomienie
         $sql = "INSERT INTO Hearts (userID, postID)
         VALUES (\"$current_user_id\", \"$hearted_post_id\");";
+
+        if ($conn->query($sql) === TRUE) {
+            //Pobierz ostatnie ID
+            $last_ID = $conn->insert_id;
+        } else {
+            $error = $error.", ".$conn->error;
+            $operation_error = 1;
+        }
+
+        $sql = "INSERT INTO Notifs (recipientID, postData, link)
+        VALUES (\"$recipient_id\", \"$final_post_data\",\"$final_link\");";
 
         if ($conn->query($sql) === TRUE) {
             //Pobierz ostatnie ID

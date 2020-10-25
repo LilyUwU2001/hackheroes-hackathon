@@ -36,7 +36,8 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE Users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    theme VARCHAR(255) NOT NULL
 )";
 
 if ($conn->query($sql) === TRUE) {

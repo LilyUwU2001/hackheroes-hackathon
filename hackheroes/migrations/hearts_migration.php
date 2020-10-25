@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 	$migration_error = 1;
 }
 
-//Usuń tabelę "Użytkownicy"
+//Usuń tabelę "Serduszka"
 $sql = "DROP TABLE IF EXISTS Hearts";
     
 if ($conn->query($sql) === TRUE) {
@@ -32,7 +32,7 @@ if ($conn->query($sql) === TRUE) {
     $migration_error = 1;
 }
 
-//Stwórz tabelę "Użytkownicy"
+//Stwórz tabelę "Serduszka"
 $sql = "CREATE TABLE Hearts (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     userID BIGINT UNSIGNED,

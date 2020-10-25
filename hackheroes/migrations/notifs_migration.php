@@ -22,33 +22,28 @@ if ($conn->query($sql) === TRUE) {
 	$migration_error = 1;
 }
 
-//Usuń tabelę "Emocje"
-$sql = "DROP TABLE IF EXISTS Emotions";
+//Usuń tabelę "Powiadomienia"
+$sql = "DROP TABLE IF EXISTS Notifs";
     
 if ($conn->query($sql) === TRUE) {
-    echo "Usunięto pomyślnie tabelę Emotions.<br>";
+    echo "Usunięto pomyślnie tabelę Notifs.<br>";
 } else {
-    echo "Błąd podczas usuwania tabeli Emotions: " . $conn->error . "<br>";
+    echo "Błąd podczas usuwania tabeli Notifs: " . $conn->error . "<br>";
     $migration_error = 1;
 }
 
-//Stwórz tabelę "Emocje"
-$sql = "CREATE TABLE Emotions (
+//Stwórz tabelę "Powiadomienia"
+$sql = "CREATE TABLE Notifs (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    userID BIGINT UNSIGNED NOT NULL,
-    insertionDate DATE NOT NULL,
-    basicEmotionImage TEXT NOT NULL,
-    basicEmotion VARCHAR(255) NOT NULL,
-    extendedEmotion VARCHAR(255) NOT NULL,
-    explanation TEXT,
-    public BOOLEAN NOT NULL,
-    hearts BIGINT UNSIGNED NOT NULL
+    recipientID BIGINT UNSIGNED,
+    postData TEXT NOT NULL,
+    link TEXT NOT NULL
 )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Utworzono pomyślnie tabelę Emotions.<br>";
+    echo "Utworzono pomyślnie tabelę Notifs.<br>";
 } else {
-    echo "Błąd podczas tworzenia tabeli Emotions: " . $conn->error . "<br>";
+    echo "Błąd podczas tworzenia tabeli Notifs: " . $conn->error . "<br>";
 	$migration_error = 1;
 }
 

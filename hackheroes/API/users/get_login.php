@@ -35,11 +35,11 @@
     if ($result->num_rows > 0) {
         //Jeżeli użytkownik o podanych danych istnieje, wyciągnij jego dane
         while($row = $result->fetch_assoc()) {
-            $arr = array('result' => 'Użytkownik jest zalogowany.', 'resultType' => 'info', 'ID' => $row["id"], 'username' => $row["username"], 'sessionID' => session_id());
+            $arr = array('result' => 'Użytkownik jest zalogowany.', 'resultType' => 'info', 'ID' => $row["id"], 'username' => $row["username"], 'theme' => $row["theme"], 'sessionID' => session_id());
             echo json_encode($arr);
         }
         } else {
-            $arr = array('result' => 'Użytkownik nie jest zalogowany.', 'resultType' => 'danger', 'ID' => 0, 'username' => 'not_logged_in', 'sessionID' => session_id());
+            $arr = array('result' => 'Użytkownik nie jest zalogowany.', 'resultType' => 'danger', 'ID' => 0, 'username' => 'not_logged_in', 'theme' => "default", 'sessionID' => session_id());
             echo json_encode($arr);
     }
 ?>

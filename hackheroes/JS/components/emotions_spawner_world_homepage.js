@@ -1,3 +1,4 @@
+//BAAAAAAAAAAAAAAAAAAAAAARDZO dużo redundacji na stronie głównej
 currentLoggedInID = ""
 usernameList = []
 heartsList = []
@@ -56,7 +57,7 @@ function getUsernames() {
 //Sporo redundancji
 function spawnEmotions(date, basicEmotion) {
     //Pobierz listę użytkowników i obecnie zalogowanego
-    $.get("API/emotions/get_emotions_world.php", {
+    $.get("API/emotions/get_emotions_world_homepage.php", {
         date: date,
         basicEmotion: basicEmotion
     }).done(function(response) {

@@ -1,26 +1,11 @@
 <?php 
     //Jeżeli podano ID sesji, zmień id sesji
-    if (isset($_GET["session_id"])) {
-        session_id($_GET["session_id"]);
-    }
     //Dołącz zewnętrzną bibliotekę do sanityzacji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
     //Dołącz konfigurację aplikacji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
     //Dołącz obsługę sesji
     require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
-    $current_user_id = $_SESSION["user"];
-    //Sprawdź czy wartości są ustawione oraz czy nie są puste
-    if (isset($_GET["date"])) {
-        if ($_GET["date"] <> "") {
-            $date = $_GET["date"];
-        }
-    }
-    if (isset($_GET["basicEmotion"])) {
-        if ($_GET["basicEmotion"] <> "") {
-            $basicEmotion = $_GET["basicEmotion"];
-        }
-    }
     $error = '';
     $operation_error = 0;
     $all_emotions_array = [];
@@ -46,25 +31,18 @@
     }
 
     //Spreparuj SQLa wyszukiwarki
-    $sql = "SELECT * FROM Emotions WHERE userID = '$current_user_id'";
-    if (isset($date)) {
-        $sql = $sql." AND insertionDate = '$date'";
-    }
-    if (isset($basicEmotion)) {
-        $sql = $sql." AND basicEmotion = '$basicEmotion'";
-    }
-    $sql = $sql." ORDER BY id DESC";
-    //Wyciągnij wszystkie emocje użytkownika
+    $sql = "SELECT * FROM Emotions WHERE public = TRUE ORDER BY id DESC LIMIT 5";
+    //Wyciągnij wszystkie emocje
     $result=mysqli_query($conn, $sql);
 
     if ($result->num_rows > 0) {
         //Jeżeli emocje istnieją, pobierz dane
         while($row = $result->fetch_assoc()) {
-            //Rób tablicę wszystkich wpisów użytkownika!
+            //Rób tablicę wszystkich wpisów!
             array_push($all_emotions_array, array("ID"=>$row["id"], "userID"=>$row["userID"], "insertionDate"=>$row["insertionDate"], "basicEmotionImage"=>$row["basicEmotionImage"], 
-                "basicEmotion"=>$row["basicEmotion"], "extendedEmotion"=>$row["extendedEmotion"],"explanation"=>$row["explanation"], "hearts"=>$row["hearts"]));
+                "basicEmotion"=>$row["basicEmotion"], "extendedEmotion"=>$row["extendedEmotion"],"explanation"=>$row["explanation"],"public"=>$row["public"],"hearts"=>$row["hearts"]));
         }
-        //Na koniec wypluj z API tablicę zawierającą wszystkie wpisy do dziennika emocji jako JSON
+        //Na koniec wypluj z API tablicę zawierającą wszystkie wpisy do świata emocji jako JSON
         $arr = array('result' => 'Znaleziono emocje.', 'resultType' => 'info', 'data' => $all_emotions_array);
         echo json_encode($arr);
     } 

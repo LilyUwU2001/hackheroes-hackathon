@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Tytuł-->
+        <title>Emodiary - ustawienia</title>
+        <!--Polskie znaczki-->
+        <meta charset="UTF-8">
+        <!--Ładujemy CSSy tutaj-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--Ikonka-->
+        <link rel="shortcut icon" href="images/favicon.ico" >
+        <!--Strona mobilna-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body class="mainpage">
+        <!--SZABLON-->
+        <header>
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+                <div id="message" class="fixed-top">
+                    <div id="innerMessage">
+                    <!--Miejsce na alerty-->
+                    </div>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <span class="navbar-brand">Emodiary</span>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fa fa-home"></i> Strona główna</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="emotions.html"><i class="fa fa-smile-o"></i> Dziennik emocji</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="emotions_world.html"><i class="fa fa-bullhorn"></i> Świat emocji</a>
+                        </li>       
+                        <li class="nav-item">
+                            <a class="nav-link" href="read_kindwords.html"><i class="fa fa-heart"></i> Miłe słowa</a>
+                        </li>     
+                    </ul>
+                    <ul class="navbar-nav my-2 my-lg-0">
+                        <span id="username" class="nav-link active"></span> 
+                        <li class="nav-item active">
+                            <a class="nav-link" href="settings.html"><i class="fa fa-cog"></i> Ustawienia <span class="sr-only">(obecna)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="logoutButton" onclick="logoutUser()" type="submit" class="nav-link"><i class="fa fa-sign-out"></i> Wyloguj się</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container">
+                <h1 class="display-4 text-center">Ustawienia</h1>
+                <div class="mt-4 row">
+                    <div class="card col-12">
+                        <div class="card-body">
+                            <p class="card-text d-flex justify-content-center"><b>Zmień motyw</b></p>
+                            <div class="mt-2 row">
+                                <div class="col-12">
+                                    <select class="form-control" onchange="changeTheme($('#themeSelect').val())" id="themeSelect">
+                                        <option value="default">(Domyślny motyw)</option>
+                                        <option value="cerulean">Cerulean</option>
+                                        <option value="cosmo">Cosmo</option>
+                                        <option value="cyborg">Cyborg</option>
+                                        <option value="darkly">Darkly</option>
+                                        <option value="flatly">Flatly</option>
+                                        <option value="journal">Journal</option>
+                                        <option value="litera">Litera</option>
+                                        <option value="lumen">Lumen</option>
+                                        <option value="lux">Lux</option>
+                                        <option value="materia">Materia</option>
+                                        <option value="minty">Minty</option>
+                                        <option value="pulse">Pulse</option>
+                                        <option value="sandstone">Sandstone</option>
+                                        <option value="simplex">Simplex</option>
+                                        <option value="sketchy">Sketchy</option>
+                                        <option value="slate">Slate</option>
+                                        <option value="solar">Solar</option>
+                                        <option value="spacelab">Spacelab</option>
+                                        <option value="superhero">Superhero</option>
+                                        <option value="united">United</option>
+                                        <option value="yeti">Yeti</option>
+                                    </select>
+                                    <p class="text-center mt-4"><b><span id="themeDesc">Domyślny motyw aplikacji.</span></b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 row">
+                    <div class="card col-12">
+                        <div class="card-body">
+                            <p class="card-text text-center justify-content-center">
+                                <b>Zmień hasło</b>
+                                <input type="password" class="form-control mt-2" id="password" aria-describedby="passwordHelp" placeholder="Hasło">
+                                <small id="passwordHelp" class="form-text text-muted">Podaj swoje nowe hasło. Minimum 8 znaków.</small>
+                                <br>
+                                <input type="password" class="form-control" id="passwordAgain" aria-describedby="passwordAgainHelp" placeholder="Powtórz hasło">
+                                <small id="passwordAgainHelp" class="form-text text-muted">Podaj swoje nowe hasło ponownie, by uniknąć błędów.</small>
+                                <br>
+                                <button id="clearDate" onclick="changePassword()" class="btn btn-primary btn-block"><i class="fa fa-lock"></i> Zmień hasło</button>
+                                <br><b class="text-danger">Uwaga, zmiana hasła spowoduje wylogowanie!</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 row">
+                    <div class="card mb-4 col-12">
+                        <div class="card-body">
+                            <p class="card-text text-center justify-content-center">© 2020 Adrian Orzech. Wykonano na hackathon HackHeroes.
+                                <br>
+                                <br><b>Wykorzystane zdjęcia oraz kod dostępne są na wolnych licencjach:</b>
+                                <br>
+                                <br><b>Zdjęcia:</b>
+                                <br>Openmoji (Emotikony, logo) - Creative Commons Share Alike License 4.0 (CC BY-SA 4.0).
+                                <br>Shining-Sun-over-Mountain-Landscape__IMG_7468-580x386 (Tło landing page) - This image was marked with a CC BY 2.0 license.
+                                <br>
+                                <br><b>Kod:</b>
+                                <br>jQuery - MIT License.
+                                <br>Bootstrap - MIT License.
+                                <br>Bootswatch (Motywy do Bootstrapa) - MIT License.
+                                <br>Sanitize.php (Biblioteka zabezpieczająca) - GNU GPL 2.0 - notka o autorstwie w kodzie źródłowym aplikacji
+                                <br>
+                                <br><b>Wersja 1.0</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--Javascript od frameworka idzie tutaj-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://unpkg.com/jquery-bsalert@2.0.0/dist/jquery.bsAlert.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="JS/themes.js"></script>
+        <script src="JS/index.js"></script>
+        <script src="JS/settings.js"></script>
+    </body>     
+</html>
