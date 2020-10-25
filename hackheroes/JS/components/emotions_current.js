@@ -5,7 +5,7 @@ var emotionsSelect = {
     'Lękliwy': ['Przestraszony', 'Niespokojny', 'Niepewny', 'Uległy', 'Odrzucony', 'Zastraszony', 'Nie potrafię doprecyzować'],
     'Rozgniewany': ['Rozczarowany', 'Upokorzony', 'Nienawistny', 'Zagrożony', 'Agresywny', 'Sfrustrowany', 'Zdystansowany', 'Krytyczny', 'Nie potrafię doprecyzować'],
     'Zniesmaczony': ['Nieprzychylny', 'Rozczarowany', 'Czujący się podle', 'Stroniący', 'Nie potrafię doprecyzować'],
-    'Smutny': ['Samotny', 'Zraniony', 'Zrozpaczony', 'Winny', 'Przygnębiony', 'Zraniony', 'Nie potrafię doprecyzować'],
+    'Smutny': ['Samotny', 'Zraniony', 'Zrozpaczony', 'Winny', 'Przygnębiony', 'Nie potrafię doprecyzować'],
     'Szczęśliwy': ['Żartobliwy', 'Zadowolony', 'Zainteresowany', 'Dumny', 'Akceptowany', 'Pełen siły', 'Spokojny', 'Czujący bliskość', 'Optymistyczny', 'Nie potrafię doprecyzować'],
     'Nie potrafię określić': ['Nie potrafię doprecyzować']
 };
