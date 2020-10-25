@@ -41,11 +41,13 @@
 .facebook-btn {
     background: #3b5998 !important;
     color: #FFFFFF !important;
+    border-color: #3b5998 !important;
 }
 
 .facebook-btn:hover {
     background: #2f4779 !important;
     color: #FFFFFF !important;
+    border-color: #2f4779 !important;
 }
 
 /* alert bootstrapowy */
