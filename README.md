@@ -4,9 +4,11 @@ App for hackheroes 2020
 ## Krótki opis / Overview
 ### PL:
 Emodiary to aplikacja, która pozwala Ci śledzić swój stan emocjonalny i dzielić się nim publicznie, także na Facebooku.
+
 Oryginalnie stworzona jako aplikacja dla ludzi ze spektrum autyzmu, w późniejszym okresie stała się ogólnym dziennikiem emocji.
 ### EN:
 Emodiary is an app that allows you to track your emotional state and share it with public and your Facebook feed.
+
 Originally meant as an app mainly for autistic spectrum people, this has expanded to be a general-purpose emotion diary.
 
 ## Instrukcje instalacji / Install instructions
