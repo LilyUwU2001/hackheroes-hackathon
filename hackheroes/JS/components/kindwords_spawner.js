@@ -68,7 +68,6 @@ function deleteKindWords(delete_id) {
     $.post("API/kindwords/delete_kindwords.php", {
         kindwordsID: delete_id
     }).done(function(response) {
-        alert(response)
         //Wyświetl zwróconą wiadomość z API
         var json = $.parseJSON(response)
         $('#innerMessage').bsAlert(
