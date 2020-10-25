@@ -4,11 +4,11 @@
         session_id($_POST["session_id"]);
     }
     //Dołącz zewnętrzną bibliotekę do sanityzacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/sanitize.php');
     //Dołącz konfigurację aplikacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
     //Dołącz obsługę sesji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/session.php');
     $current_user_id = $_SESSION["user"];
     $emotionID = $_POST["emotionID"];
     $error = '';

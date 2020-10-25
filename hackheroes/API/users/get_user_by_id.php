@@ -1,10 +1,10 @@
 <?php 
     //Dołącz zewnętrzną bibliotekę do sanityzacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/sanitize.php');
     //Dołącz konfigurację aplikacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
     //Dołącz obsługę sesji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/session.php');
     $user_id = $_GET["user_ID"];
 
     //Utwórz obiekt z połączeniem

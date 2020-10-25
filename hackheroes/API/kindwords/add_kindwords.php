@@ -20,11 +20,11 @@
         session_id($_POST["session_id"]);
     }
     //Dołącz zewnętrzną bibliotekę do sanityzacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/sanitize.php');
     //Dołącz konfigurację aplikacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
     //Dołącz obsługę sesji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/session.php');
     $current_user_id = $_SESSION["user"];
     $kindwords_post_id = sanitize_sql_string(sanitize_html_string($_POST["post_id"]));
     $kindwords_text = sanitize_sql_string(sanitize_html_string($_POST["kindwords"]));

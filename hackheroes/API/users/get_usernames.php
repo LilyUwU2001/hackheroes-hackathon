@@ -1,6 +1,6 @@
 <?php 
     //Dołącz konfigurację aplikacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
     //Utwórz obiekt z połączeniem
     $conn = new mysqli($servername, $username, $password);
     $all_users_array = [];

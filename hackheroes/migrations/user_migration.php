@@ -1,6 +1,6 @@
 <?php
 //Dołącz konfigurację
-require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
 $migration_error = 0;
 
 //Utwórz obiekt z połączeniem
@@ -37,7 +37,7 @@ $sql = "CREATE TABLE Users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    theme VARCHAR(255) NOT NULL
+    theme VARCHAR(255) NOT NULL DEFAULT 'default'
 )";
 
 if ($conn->query($sql) === TRUE) {

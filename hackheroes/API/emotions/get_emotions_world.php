@@ -1,11 +1,11 @@
 <?php 
     //Jeżeli podano ID sesji, zmień id sesji
     //Dołącz zewnętrzną bibliotekę do sanityzacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/sanitize.php');
     //Dołącz konfigurację aplikacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
     //Dołącz obsługę sesji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/session.php');
     //Sprawdź czy wartości są ustawione oraz czy nie są puste
     if (isset($_GET["date"])) {
         if ($_GET["date"] <> "") {

@@ -1,8 +1,8 @@
 <?php
     //Dołącz zewnętrzną bibliotekę do sanityzacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/sanitize.php');
     //Dołącz konfigurację aplikacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
     //Pobierz dane z POSTa i zsanityzuj je używając biblioteki
     $register_username = sanitize_sql_string(sanitize_html_string($_POST["register_username"]));
     $register_password = sanitize_sql_string(sanitize_html_string($_POST["register_password"]));

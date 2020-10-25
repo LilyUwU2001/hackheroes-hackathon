@@ -4,11 +4,11 @@
         session_id($_POST["session_id"]);
     }
     //Dołącz zewnętrzną bibliotekę do sanityzacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/sanitize.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/sanitize.php');
     //Dołącz konfigurację aplikacji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
     //Dołącz obsługę sesji
-    require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/session.php');
+    require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/session.php');
     $current_user_id = $_SESSION["user"];
     $changePassword = sanitize_sql_string(sanitize_html_string($_POST["password"]));
     $passwordAgain = sanitize_sql_string(sanitize_html_string($_POST["passwordAgain"]));
@@ -79,7 +79,7 @@
 
     //Wykonaj kod zmiany hasła tylko jeżeli formularz jest wypełniony
     if ($form_correctly_filled == 1) {
-        $sql = "UPDATE USERS SET password = '$final_password' WHERE id = '$current_user_id'";
+        $sql = "UPDATE Users SET password = '$final_password' WHERE id = '$current_user_id'";
         $result=mysqli_query($conn, $sql);
 
         if ($conn->query($sql) === TRUE) {

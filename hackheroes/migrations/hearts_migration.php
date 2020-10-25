@@ -1,6 +1,6 @@
 <?php
 //Dołącz konfigurację
-require ($_SERVER['DOCUMENT_ROOT'] . '/hackheroes/PHP/config.php');
+require ($_SERVER['DOCUMENT_ROOT'] . '/PHP/config.php');
 $migration_error = 0;
 
 //Utwórz obiekt z połączeniem
