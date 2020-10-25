@@ -26,7 +26,7 @@ function spawnNotifs() {
         }
         else {
            $('#notifsContainer').append(`
-                <p class="text-center"><b>Brak powiadomień.</b></h1>
+                <p class="text-center"><b>Brak powiadomień.</b></p>
             `) 
         }
     });
